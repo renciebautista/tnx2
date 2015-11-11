@@ -1,13 +1,16 @@
-E, [2015-11-11T20:54:52.523983 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:53.529685 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:54.530946 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:55.536805 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:56.539274 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:57.542263 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:58.547986 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:54:59.553051 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:55:00.558711 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:55:01.564132 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:55:02.566198 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:55:03.571993 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
-E, [2015-11-11T20:55:04.577687 #830] ERROR -- : Host is down - sendto(2) - Connecting to TNX Server list.
+# Logfile created on 2015-11-11 23:09:41 +0800 by logger.rb/47272
+E, [2015-11-11T23:11:45.064309 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:46.079935 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:47.111187 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:48.189316 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:49.111193 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:50.126818 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:51.126822 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:52.126822 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:53.142464 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:54.173703 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:55.186860 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:56.193619 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:57.209245 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:58.271748 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
+E, [2015-11-11T23:11:59.365500 #9128] ERROR -- : An existing connection was forcibly closed by the remote host. - recvfrom(2)Listening to TNX.
