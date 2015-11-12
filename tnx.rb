@@ -30,7 +30,7 @@ class Dispatch
 		@ips = @config['tigserver']['servers']
 
 		@debug = @config['debug']
-		
+
 		@connect_time = @default_connect_time
 		@connected = ""
 		@last_update = Time.now
@@ -352,6 +352,9 @@ class Dispatch
 	 		today = Time.now.strftime("%Y%m%d%H%M%S").to_i
 	 		param = id.to_s+','+code.to_s+','+today.to_s+','+lat.to_s+','+lng.to_s
 			res = Net::HTTP.post_form(uri, 'cmd' => 'loc', 'param' => param)
+			if @debug
+	  			@log.info "1020 response - " + res
+	  		end
 		end
 	end
 
