@@ -29,6 +29,8 @@ class Dispatch
 		@default_connect_time = @config['tigserver']['default_connect_time']
 		@ips = @config['tigserver']['servers']
 
+		@debug = @config['debug']
+		
 		@connect_time = @default_connect_time
 		@connected = ""
 		@last_update = Time.now
@@ -72,6 +74,9 @@ class Dispatch
 				  	@ips.each do |ip|
 				  		begin
 				  			@socket.send(data, 0, ip.to_s, 30511)
+				  			if @debug
+					  			@log.info "Connecting to servers - " + ip.to_s
+					  		end
 				  		rescue Exception => e
 				  			@connected = ""
 				  			@log.error e.to_s + " - Connecting to TNX Server list."
@@ -80,6 +85,9 @@ class Dispatch
 				else
 					begin
 						@socket.send(data, 0, @connected.to_s, 30511)
+						if @debug
+				  			@log.info "Connecting to server - " + @connected.to_s
+				  		end
 					rescue Exception => e
 						@connected = ""
 						@log.error e.to_s + " - Connecting to TNX Server."
@@ -95,6 +103,11 @@ class Dispatch
 		loop {
 			begin
 				response = Thread.start(@socket.recvfrom(65536)) do |msg, sender| # each client thread
+
+					if @debug
+			  			@log.info "Data recieve - " + sender[3].to_s + " => " + msg
+			  		end
+
 			    	@last_update = Time.now
 			    	xml = Document.new(msg)
 			    	xmldoc = XPath.match(xml, "Tig/Client.Connected")
@@ -105,7 +118,7 @@ class Dispatch
 			    			@mutex.synchronize{ @connected = sender[3].to_s }
 			    			
 			    			lifetime = get_attribute(xml, "Client.Connected", "Lifetime").to_s.to_i / 3
-			    			if lifetime < 3
+			    			if lifetime < 1
 			    				@connect_time = @default_connect_time
 			    			else
 			    				@connect_time = lifetime
@@ -136,6 +149,10 @@ class Dispatch
 				      	begin
 			          		begin
 			          			msg = @queue.pop
+			          			if @debug
+						  			@log.info "Data popped - " + msg
+						  		end
+
 			            		process_data(msg)
 			          		rescue => e
 			          			@log.error e.to_s + "Mining error."
@@ -311,6 +328,9 @@ class Dispatch
 					status = 1
 				end
 				data = "tnx|#{@connected.to_s}|#{status}|#{@connect_time}"
+				if @debug
+		  			@log.info "Broadcasting data - " + data
+		  		end
 				socket = UDPSocket.new
 				# socket.bind("0.0.0.0", 49452)
 				socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_MULTICAST_TTL, 32)
