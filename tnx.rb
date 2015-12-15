@@ -266,6 +266,16 @@ class Dispatch
 								subscriber_name, uplink, speed, course, alt, max_pos_error, lat, lng, image_index)
 							   VALUES ('#{radio_id}', '#{mcc}', '#{mnc}', '#{ssi}', '#{tracker_code}',
 								'#{name}', '#{uplink}', '#{speed}', '#{course}', '#{alt}', '#{error}', '#{lat}', '#{lng}', '#{image_index}')")
+
+							log_result = client.query("SELECT radio_id from cur_radios where radio_id = #{radio_id}")
+							
+							if log_result.count > 0
+								client.query("UPDATE cur_radios set lat = '#{lat}', lng = '#{lng}' where radio_id = #{radio_id}")
+							else
+								client.query("INSERT INTO cur_radios (radio_id, lat, lng)
+							   VALUES ('#{radio_id}', '#{lat}', '#{lng}')")
+							end
+
 						end
 				else
 					query2 = "SELECT trains.id,head,trains.train_code,trains.train_desc,mcc,mnc,ssi,tracker_code, trains.image_index
@@ -291,10 +301,22 @@ class Dispatch
 							code = tracker_code
 							image_index = row["image_index"].to_s
 							head = row["head"].to_s
+
 							client.query("INSERT INTO logs (train_id,train_code, train_desc, mcc, mnc, ssi, tracker_code, head,
 								subscriber_name, uplink, speed, course, alt, max_pos_error, lat, lng, image_index)
 							   VALUES ('#{train_id}','#{train_code}', '#{train_desc}', '#{mcc}', '#{mnc}', '#{ssi}', '#{tracker_code}', '#{head}',
 								'#{name}', '#{uplink}', '#{speed}', '#{course}', '#{alt}', '#{error}', '#{lat}', '#{lng}', '#{image_index}')")
+
+							if head == 1
+								log_result = client.query("SELECT train_id from cur_trains where train_id = #{train_id}")
+
+								if log_result.count > 0
+									client.query("UPDATE cur_trains set lat = '#{lat}', lng = '#{lng}' where train_id = #{train_id}")
+								else
+									client.query("INSERT INTO cur_trains (train_id, lat, lng)
+								   VALUES ('#{train_id}', '#{lat}', '#{lng}')")
+								end
+							end
 						end
 					end
 				end	
